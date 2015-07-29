@@ -1,0 +1,86 @@
+# Filename: design2.txt
+# Author:   Rachael Birky
+# Date:     04.30.12
+# Email:    rbirky1@umbc.edu
+# Section:  02
+#
+# Project two is an auto-fill program.
+#  Given a text file that represents an image
+#  and a coordinate, it changes that coordinate
+#  and all those around it within a natural barrier
+#  or the edge of the image.
+
+Algorithm Design:
+
+I.    The greeting is displayed to the user by a call to printGreeting()
+II.   The command line is accessed
+	A. The file matrix.txt should be at [1]
+		1. use a try-except structure to check
+		    exit program if file is absent
+		    assign to inFile if file is present
+	B. The x and y coordinates should be at [2] and [3]
+		2. store x coordinate in variable xCoor, and
+		    y coordinate in variable yCoor
+III.  Call makeMatrix() to make an empty matrix, then fill it...
+	A. Open file to read
+	B. Use a for loop to access each line in the file
+		1. Use a nested for loop to access each character
+		    in the given line
+		2. Append each item to the matrix at appropriate
+		    coordinate, given by nested loop index values
+	C. Close file
+IV.   Print original matrix to screen
+V.    Call autoFill() -- a recursive function
+	A. Base case: if the coordinate is an X or the screen edge
+	B. Else: change the value at [x][y] in matrix variable newMatrix to 'X'
+	C. Call autoFill() with modified values
+		1. fill positions…
+			[x-1] [y]
+		[x][y-1] [x]  [y]  [x, y+1]
+			[x+1] [y]
+		   using an if-else structure
+		   If 'x', return nothing
+		    else make 'x', call autoFill() within itself
+		2. Base Case: item is already an "x" and all 
+		    boundaries have been met
+VI.   Print newMatrix to screen and to file using nested for loops
+________________________________________________________________________________
+
+Constants:
+
+# number of rows in file, incremented in for loop
+ROW_COUNT = 0
+
+# number of columns in file, assigned to len(inFile.readline().strip()
+COL_COUNT = 0
+________________________________________________________________________________
+
+Functions:
+
+# printGreeting() displays a greeting and explanation of program
+# input: none
+# output: none
+def printGreeting()
+
+# checkForFile() accesses the command line to make sure the user provided a file
+#  ***this might actually have to be coded in main() if sys.exit() is used!***
+# input: none
+# output: file given in command line; exits if there is none
+def checkForFile():
+
+# makeMatrix() creates a matrix of the appropriate size, fills it with
+#  content of file
+# input: a file
+# output: a matrix
+def makeMatrix()
+
+# printMatrix() displays the given matrix to the screen
+# input: a matrix
+# output: none (print statements)
+def printMatrix():
+
+# autoFill() is a recursive function that calls itself to fill the matrix
+#  with a certain character until the base case is met
+# input: matrix, x and y coordinates
+# output: modified matrix
+def autoFill():
